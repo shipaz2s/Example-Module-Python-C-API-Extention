@@ -35,6 +35,18 @@
 		pip install .\PATH\TO\whl-file
 
 
-3. Files description
+3. Several ways to use module: 
+	- build and install as paragraph 2
+	- copy .pyd or .so file to module search path (command to find: python -m site) or add directory with .pyd or .so file to PYTHONPATH environment variable 
 
-settings_example: example of settings for vscode
+	.pyi files is required for pylance (vscode tips for coding). To use it set python.analysis.extraPaths in settings.json file to directory containing .pyi file
+
+4. Files description
+
+	settings_example: example of settings for vscode
+	custom.c: extention code
+	minimal_requirements.txt: requirements for just building extention
+	requirements.txt: requirements to build extention as .whl file to be able to install module with pip
+	setup.py, pyproject.toml: need to build .whl
+	CMakeLists.txt: file for cmake build system
+	test.py: working module example (watch paragraph 3) 
