@@ -1,0 +1,40 @@
+1. building only module
+
+	pip install -r minimal_requirements.txt (or just install numpy and mypy with pip)
+	mypy is required to build pyi - file with stubs for pylance (tips for coding)
+
+	We need do build shared library from custom.c
+
+	LINUX: 
+		just build custom.so by command:
+			gcc custom.c -shared -o custom.so -I/path/to/python/include -I/path/to/numpy/include
+
+			
+	WINDOWS: 
+		build custom.pyd (the same thing as custom.dll, just renamed) by command:
+			cl.exe custom.c /LD /I "D:/Program Files/Python312/Lib/site-packages/numpy/core/include/numpy" /I  "D:/Program Files/Python312/include" /link /LIBPATH:"D:/Program Files/Python312/libs" /out:custom.pyd
+
+			"D:/Program Files/Python312" - python 3.12  install path
+
+	CMAKE:
+		Easiest way is to use cmake. Example (from project directory):
+			mkdir build
+			cd buid
+			cmake ..
+			cmake --build .
+
+
+2. building and installing modules for pip
+
+	pip install -r requirements.txt
+
+	buid module (whl):
+		python -m build PATH\TO\DIR\WITH\setup.py
+
+	install module:
+		pip install .\PATH\TO\whl-file
+
+
+3. Files description
+
+settings_example: example of settings for vscode
